@@ -17,7 +17,7 @@ buildscript
     }
     dependencies
     {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
 
@@ -32,7 +32,7 @@ compileJava {
 }
 
 minecraft {
-	version = "1.10.2-12.18.3.2185"
+	version = "1.12.2-14.23.5.2838"
 	//version = "1.11.2-13.20.0.2315"
     runDir = "run"
     
@@ -41,7 +41,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20161111"
+    mappings = "snapshot_20180814"
 	//mappings = "snapshot_20170430"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
