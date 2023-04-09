@@ -1,4 +1,5 @@
-# Dregora - The source files of Dregora can be easily extracted by installing the mod and letting it unpack in /mods/openterraingenerator/worlds/dregora close to none of the content is obfuscated. The content however still falls under the licenses(s) attached to the download on the curseforge platform.
+# Dregora
+The source files of Dregora can be easily extracted by installing the mod and letting it unpack in /mods/openterraingenerator/worlds/dregora close to none of the content is obfuscated. The content however still falls under the licenses(s) attached to the download on the curseforge platform.
 
 For 1.16.5 and on the unpacked mod can be found in /configs/openterraingenerator/presets/dregora
 
