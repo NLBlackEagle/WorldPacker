@@ -1,17 +1,17 @@
 [
-{
-"modid": "myworldpackid",
-"name": "My worldpack name",
-"description": "My mod description.",
-"version": "1.0",
-"credits": "A list of people who worked on this worldpack.",
-"logoFile": "OTGlogo.png",
-"mcversion": "",
-"url": "My worldpack's website (if any)",
-"updateUrl": "",
-  "authors": [ "" ],
-"parent":"",
-"screenshots": [],
-"dependencies": []
-}
+  {
+    "modid": "drl",
+    "name": "DregoraRL",
+    "description": "DregoraRL, a custom world pack for use with RLCraft & OpenTerrainGenerator (OTG).",
+    "version": "1.0",
+    "credits": "NLBlackEagle, NLBlackHeavenNL",
+    "logoFile": "OTGLogo.png",
+    "mcversion": "1.12.2",
+    "url": "https://dregora.com",
+    "updateUrl": "https://www.curseforge.com/minecraft/mc-mods/dregora-rlc",
+    "authors": [ "NLBlackEagle" ],
+    "parent":"",
+    "screenshots": [],
+    "dependencies": []
+  }
 ]
