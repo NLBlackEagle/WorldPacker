@@ -39,7 +39,8 @@ import org.apache.logging.log4j.Logger;
 // 4. That's it, copy your jar file to a /mods/ directory and run the game!
 
 // Uncomment this line if your worldpack requires only OpenTerrainGenerator.
-@Mod(modid = "myworldpackid", name = "My worldpack name", version = "1.0", acceptableRemoteVersions = "*", useMetadata = true, dependencies = "required-after:openterraingenerator")
+@Mod(modid = "drl", name = "DregoraRL", version = "1.9", acceptableRemoteVersions = "*", useMetadata = true, dependencies = "required-after:openterraingenerator")
+//;required-after:biomesoplenty;required-after:baubles;required-after:coralreef;required-after:defiledlands;required-after:dynamictrees;required-after:dynamictreesbop;required-after:dynamictreesdefiledlands;required-after:dttraverse;required-after:iceandfire;required-after:llibrary;required-after:traverse;required-after:rustic;required-after:quark;required-after:charm;")
 // Uncomment and edit this line if your worldpack requires other mods or worldpacks.
 //@Mod(modid = "myworldpackid", name = "My worldpack name", version = "1.0", acceptableRemoteVersions = "*", useMetadata = true, dependencies = "required-after:openterraingenerator;required-after:otgflatlands;required-after:otgskylands;required-after:otgvoid")
 // Uncomment this line to run and test this mod from your development environment without requiring OTG.
@@ -49,7 +50,7 @@ import org.apache.logging.log4j.Logger;
 
 public class WorldPacker
 {
-	public static Logger LOGGER = LogManager.getLogger("DregoraOP");
+	public static Logger LOGGER = LogManager.getLogger("DregoraRL");
 
 	@EventHandler
 	public void load(FMLInitializationEvent event)
@@ -157,7 +158,7 @@ public class WorldPacker
 
 				if(arr[0] > arr[2] || (arr[0] == arr[2] && arr[1] > arr[3]) || (!Version.exists())) {
 					if(!Version.exists()) {
-						LOGGER.info("Brand new install, extracting world files for preset " + worldName + "...");
+						LOGGER.info("Preset not detected, initiating new install, extracting world files for preset " + worldName + "...");
 					}
 					if(arr[0] > arr[2] || (arr[0] == arr[2] && arr[1] > arr[3])) {
 						LOGGER.info("More recent jar detected, will update preset " + worldName + " from version: " + arr[2] + "." + arr[3] +" to version: " + arr[0] + "." + arr[1]);
@@ -172,20 +173,25 @@ public class WorldPacker
 						{
 							f.mkdirs();
 						} else {
-							f.createNewFile();
+							if (!f.toString().contains(Version.toString())) {
+								f.createNewFile();
+							} else {
+								// Make sure version.txt is always unpacked first.
+								// This makes sure that the player does not end up with a corrupt installation on early exit whilst unpacking
+								Version.createNewFile();
+							}
 							FileOutputStream fos = new FileOutputStream(f);
 							byte[] byteArray = new byte[1024];
 							int i;
 							java.io.InputStream is = jarFile.getInputStream(jarEntry);
-							while ((i = is.read(byteArray)) > 0)
-							{
+							while ((i = is.read(byteArray)) > 0) {
 								fos.write(byteArray, 0, i);
 							}
 							is.close();
 							fos.close();
 						}
 					}
-					LOGGER.info("Completed Update Progress " + worldName + " is now version " + arr[2] + "." + arr[3]);
+					LOGGER.info("Completed Update Progress " + worldName + " is now version " + arr[0] + "." + arr[1]);
 				} else {
 					LOGGER.info("Preset " + worldName + " version " + arr[0] + "." + arr[1] + " detected, nothing to do.");
 				}
